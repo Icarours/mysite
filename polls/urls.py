@@ -5,11 +5,14 @@ from . import views
 接下来，在项目的主urls.py文件中添加urlpattern条目，指向我们刚才建立的polls这个app独有的urls文件，这里需要导入include模块。
 打开mysite/urls.py文件，代码如下：
 '''
+app_name = 'polls'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:question_id>/', views.detail, name='detail'),
+    # path('<int:question_id>/', views.detail, name='detail'),
     path('<int:question_id>/results/', views.results, name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
+    # 添加新的单词'specifics'
+    path('specifics/<int:question_id>/', views.detail, name='detail'),
 ]
 '''
 path()方法：
